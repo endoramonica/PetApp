@@ -1,0 +1,101 @@
+﻿📦 PetAdoptionSolution/
+├── 📁 Pet.API
+│   ├── Controllers/
+│   ├── Middlewares/
+│   ├── Extensions/
+│   │   └── MapperExtensions.cs
+│   ├── Hubs/
+│   ├── Program.cs
+│   └── appsettings.json
+├── 📁 Pet.AdminAPI
+│   ├── Controllers/
+│   ├── Middlewares/
+│   ├── Program.cs
+│   └── appsettings.json
+├── 📁 Pet.AdminWeb
+│   ├── Controllers/
+│   ├── Views/
+│   ├── Services/
+│   ├── ViewModels/
+│   ├── wwwroot/
+│   └── Program.cs
+├── 📁 Pet.Core
+│   ├── 📁 Domain/
+│   │   ├── Entities/
+│   │   │   ├── AppUser.cs
+│   │   │   ├── AppRole.cs
+│   │   │   ├── AppUserRole.cs
+│   │   │   ├── Address.cs
+│   │   │   ├── Pet.cs
+│   │   │   ├── PetCategory.cs
+│   │   │   ├── PetPetCategory.cs
+│   │   │   ├── PetMedicalRecord.cs
+│   │   │   ├── PetMedia.cs
+│   │   │   ├── PetRating.cs
+│   │   │   ├── AdoptionCart.cs
+│   │   │   ├── AdoptionCartItem.cs
+│   │   │   ├── AdoptionRequest.cs
+│   │   │   ├── AdoptionDetail.cs
+│   │   │   ├── AdoptionStatus.cs
+│   │   │   ├── AdoptionCampaign.cs
+│   │   │   ├── AdoptionCampaignPet.cs
+│   │   │   ├── Notification.cs
+│   │   │   ├── Report.cs
+│   │   │   ├── UserAdoption.cs
+│   │   │   ├── UserFavorite.cs
+│   │   │   └── ChatMessage.cs
+│   │   ├── Enums/
+│   │   ├── Enumerations/
+│   │   │   ├── AdoptionStatus.cs
+│   │   │   └── Gender.cs
+│   │   └── ValueObjects/
+│   ├── 📁 Application/
+│   │   ├── DTOs/
+│   │   │   ├── AppUserDto.cs
+│   │   │   ├── AppUserCreateDto.cs
+│   │   │   ├── AppUserUpdateDto.cs
+│   │   │   ├── AddressDto.cs
+│   │   │   ├── PetDto.cs
+│   │   │   ├── PetCreateDto.cs
+│   │   │   ├── PetCategoryDto.cs
+│   │   │   ├── PetMedicalRecordDto.cs
+│   │   │   ├── PetMediaDto.cs
+│   │   │   ├── PetRatingDto.cs
+│   │   │   ├── AdoptionCartDto.cs
+│   │   │   ├── AdoptionCartItemDto.cs
+│   │   │   ├── AdoptionRequestDto.cs
+│   │   │   ├── AdoptionDetailDto.cs
+│   │   │   ├── AdoptionStatusDto.cs
+│   │   │   ├── AdoptionCampaignDto.cs
+│   │   │   ├── AdoptionCampaignPetDto.cs
+│   │   │   ├── NotificationDto.cs
+│   │   │   ├── ReportDto.cs
+│   │   │   ├── ChatMessageDto.cs
+│   │   │   ├── SendMessageRequest.cs
+│   │   │   └── ChatHistoryResponse.cs
+│   │   ├── Interfaces/
+│   │   ├── Services/
+│   │   ├── Validation/
+│   │   └── Selectors/
+│   │       └── PetSelectors.cs
+│   ├── 📁 Infrastructure/
+│   │   ├── Data/
+│   │   │   └── ApplicationDBContext.cs
+│   │   ├── Repositories/
+│   │   ├── Firebase/
+│   │   ├── MongoDB/
+│   │   │   └── MongoDBContext.cs
+│   │   └── Services/
+│   ├── 📁 Shared/
+│   │   ├── Helpers/
+│   │   ├── Constants/
+│   │   └── Common/
+│   ├── 📁 Contracts/
+│   │   ├── Requests/
+│   │   ├── Responses/
+│   │   └── Errors/
+│   └── Pet.Core.csproj
+├── 📁 script/
+│   ├── init.sql
+│   └── seed_data.sql
+└── 📄 Pet.sln
