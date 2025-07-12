@@ -29,6 +29,10 @@ namespace Pet.Core.Application.AutoMapper
             CreateMap<Report, ReportDto>();
             CreateMap<UserAdoption, AdoptionRequestDto>().ReverseMap();
             // CreateMap<UserFavorite>().ReverseMap(); chua co class tuong ung ben trong Dto
+            CreateMap<AppUser, LoggedInUser>()
+    .ForMember(dest => dest.AvatarUrl, opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.PhotoUrl) ? "add_a_photo.png" : src.PhotoUrl))
+    .ForMember(dest => dest.AvatarUrl, opt => opt.MapFrom(src => src.PhotoUrl ?? ""));
+
             CreateMap<ChatMessage, ChatMessageDto>();
             CreateMap<SendMessageRequest, ChatMessage>();
             CreateMap<ChatMessage, ChatHistoryResponse>().ConvertUsing(src => new ChatHistoryResponse { Messages = new List<ChatMessageDto> { new ChatMessageDto { Id = src.Id, SenderId = src.SenderId, ReceiverId = src.ReceiverId, Content = src.Content, SentAt = src.SentAt, IsRead = src.IsRead } } });

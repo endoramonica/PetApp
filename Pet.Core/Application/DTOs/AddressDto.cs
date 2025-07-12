@@ -1,7 +1,5 @@
-namespace Pet.Core.Application.DTOs
+﻿namespace Pet.Core.Application.DTOs
 {
-
-    
     public class AddressDto
     {
         public int Id { get; set; }
@@ -10,4 +8,5 @@ namespace Pet.Core.Application.DTOs
         public string Country { get; set; }
         public int AppUserId { get; set; }
     }
+
 }

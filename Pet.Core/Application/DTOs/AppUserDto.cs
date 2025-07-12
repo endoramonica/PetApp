@@ -14,5 +14,6 @@ namespace Pet.Core.Application.DTOs
         public string FullName { get; set; }
         public string AvatarUrl { get; set; }
         public DateTime CreatedAt { get; set; }
+         public string PhotoUrl { get; set; }
     }
 }

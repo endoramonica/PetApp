@@ -1,31 +1,641 @@
+﻿/* Base font size with smooth scaling */
 html {
   font-size: 14px;
+  position: relative;
+  min-height: 100%;
+  scroll-behavior: smooth;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  color-scheme: light dark;
+}
+/* site.css hoặc StyleSheet.css */
+
+.search-container {
+    position: relative;
 }
 
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.search-input {
+    padding-left: 30px;
+}
+
+/* Responsive font scaling */
+@media (min-width: 576px) {
+  html {
+    font-size: 15px;
+  }
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+@media (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (min-resolution: 2dppx) {
+  html {
+    font-size: 15px;
+  }
+}
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+main {
+    flex: 1;
+}
+
+/* Body styling with enhanced transitions */
 body {
-  margin-bottom: 60px;
+  margin-bottom: 4rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.7;
+  background-color: inherit;
+  color: #222;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow-x: hidden;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
+/* Container for responsive layouts with subtle animations */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  position: relative;
+  transition: padding 0.3s ease;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+}
+
+/* Manual dark mode override via .dark-mode on body */
+body.dark-mode,
+body.dark-mode html {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .card {
+  background: linear-gradient(rgba(30, 41, 59, 0.95), rgba(30, 41, 59, 0.95)) padding-box,
+              linear-gradient(45deg, #374151, #4b5563) border-box !important;
+}
+
+body.dark-mode .card:hover {
+  background: linear-gradient(rgba(30, 41, 59, 0.98), rgba(30, 41, 59, 0.98)) padding-box,
+              linear-gradient(45deg, #258cfb, #3b82f6) border-box !important;
+}
+
+body.dark-mode .btn {
+  background: linear-gradient(45deg, #3b82f6 0%, #60a5fa 100%) !important;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3) !important;
+  color: #fff !important;
+}
+
+body.dark-mode .btn:hover,
+body.dark-mode .btn:focus-visible {
+  background: linear-gradient(45deg, #2563eb 0%, #3b82f6 100%) !important;
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4) !important;
+}
+
+body.dark-mode .glass-card {
+  background: rgba(30, 41, 59, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .glass-card:hover {
+  background: rgba(30, 41, 59, 0.4) !important;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background: linear-gradient(#1e293b, #1e293b) padding-box,
+              linear-gradient(45deg, #374151, #4b5563) border-box !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+  border-color: #258cfb !important;
+  background: linear-gradient(#1e293b, #1e293b) padding-box,
+              linear-gradient(45deg, #258cfb, #3b82f6) border-box !important;
+}
+
+body.dark-mode a {
+  color: #60a5fa !important;
+}
+
+body.dark-mode a:hover,
+body.dark-mode a:focus {
+  color: #93c5fd !important;
+  text-shadow: 0 4px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+body.dark-mode .footer {
+  background: rgba(30, 41, 59, 0.7) !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .navbar-brand {
+  background: rgba(30, 41, 59, 0.7) !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .navbar .nav-link {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .navbar .nav-link:hover {
+  color: #60a5fa !important;
+}
+
+body.dark-mode .spinner {
+  border-top: 4px solid #60a5fa !important;
+}
+
+body.dark-mode .spinner::before {
+  border-bottom: 4px solid #3b82f6 !important;
+}
+
+/* Enhanced focus states with ripple effect */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(37, 140, 251, 0.3), 0 0 0 0.4rem rgba(37, 140, 251, 0.5);
+  transition: box-shadow 0.2s ease-in-out;
+  position: relative;
+}
+
+/* Ripple effect for buttons */
+.btn {
+  background: linear-gradient(45deg, #258cfb 0%, #3b82f6 100%);
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(37, 140, 251, 0.25);
+  min-width: 120px;
+  min-height: 44px;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+/* Enhanced button hover with multiple effects */
+.btn:hover, .btn:focus-visible {
+  background: linear-gradient(45deg, #2176d2 0%, #2563eb 100%);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(37, 140, 251, 0.4);
+  filter: brightness(1.15) saturate(1.1);
+  border-radius: 1rem;
+}
+
+/* Button active state with satisfying feedback */
+.btn:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 16px rgba(37, 140, 251, 0.3);
+  transition: all 0.1s ease;
+}
+
+/* Ripple effect animation */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Floating animation for buttons */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.btn.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Mobile optimized button interactions */
+@media (max-width: 768px) {
+  .btn:hover, .btn:focus-visible {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 24px rgba(37, 140, 251, 0.3);
+  }
+  
+  .btn:active {
+    transform: translateY(0) scale(0.96);
+  }
+}
+
+/* Disabled button state with fade animation */
+.btn:disabled, .btn[disabled] {
+  background: linear-gradient(45deg, #b0b3b8 0%, #d1d5db 100%);
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  transform: none;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced form controls with morphing effects */
+.form-control, .form-select {
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #e2e8f0, #cbd5e1) border-box;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 1rem;
+  padding: 0.875rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Form control focus with expanding border */
+.form-control:focus, .form-select:focus {
+  border-color: #258cfb;
+  box-shadow: 0 0 0 0.2rem rgba(37, 140, 251, 0.2), 0 8px 32px rgba(37, 140, 251, 0.1);
+  background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #258cfb, #3b82f6) border-box;
+  transform: scale(1.02);
+  border-radius: 0.75rem;
+}
+
+/* Floating label animation enhancement */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color, #6c757d);
   text-align: end;
+  opacity: 0.7;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
   text-align: start;
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Card component with advanced hover effects */
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box, 
+              linear-gradient(45deg, #e2e8f0, #cbd5e1) border-box;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+/* Card hover with multiple layered effects */
+.card:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow: 0 16px 48px rgba(37, 140, 251, 0.2);
+  border: 1px solid transparent;
+  background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)) padding-box, 
+              linear-gradient(45deg, #258cfb, #3b82f6) border-box;
+  border-radius: 1.25rem;
+}
+
+/* Card glow effect */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(37, 140, 251, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Card shine effect */
+.card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: transform 0.6s ease;
+  opacity: 0;
+}
+
+.card:hover::after {
+  transform: rotate(45deg) translate(100%, 100%);
+  opacity: 1;
+}
+
+/* Enhanced images with parallax-like effect */
+img, .img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  display: block;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+img:hover, .img-fluid:hover {
+  transform: scale(1.05) rotateZ(1deg);
+  box-shadow: 0 12px 40px rgba(37, 140, 251, 0.25);
+  border-radius: 1rem;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Links with animated underline and glow */
+a {
+  color: #258cfb;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: inline-block;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #258cfb, #3b82f6);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 2px;
+}
+
+a:hover, a:focus {
+  color: #2176d2;
+  transform: translateY(-2px);
+  text-shadow: 0 4px 8px rgba(37, 140, 251, 0.3);
+}
+
+a:hover::after, a:focus::after {
+  width: 100%;
+  height: 3px;
+  box-shadow: 0 2px 8px rgba(37, 140, 251, 0.4);
+}
+
+/* Pulse animation for important elements */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #258cfb, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+body.dark-mode .gradient-text {
+    -webkit-text-fill-color: #e2e8f0 !important; /* fallback chữ trắng */
+}
+
+body.dark-mode .navbar-brand {
+    background: none !important;
+    color: white !important;
+    position: relative !important;
+    z-index: 50 !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* Enhanced scrollbar with hover effects */
+::-webkit-scrollbar {
+  width: 10px;
+  background: rgba(241, 245, 249, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #258cfb, #3b82f6);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2176d2, #2563eb);
+  transform: scaleY(1.1);
+}
+
+/* Loading spinner with gradient */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid transparent;
+  border-top: 4px solid #258cfb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: relative;
+}
+
+.spinner::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 4px solid transparent;
+  border-bottom: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite reverse;
+}
+
+/* Glassmorphism effect for modern cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(37, 140, 251, 0.15);
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  html {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  }
+  
+  body {
+    color: #e2e8f0;
+  }
+  
+  .card {
+    background: linear-gradient(rgba(30, 41, 59, 0.95), rgba(30, 41, 59, 0.95)) padding-box, 
+                linear-gradient(45deg, #374151, #4b5563) border-box;
+  }
+  
+  .card:hover {
+    background: linear-gradient(rgba(30, 41, 59, 0.98), rgba(30, 41, 59, 0.98)) padding-box, 
+                linear-gradient(45deg, #258cfb, #3b82f6) border-box;
+  }
+  
+  .btn {
+    background: linear-gradient(45deg, #3b82f6 0%, #60a5fa 100%);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+  }
+  
+  .btn:hover, .btn:focus-visible {
+    background: linear-gradient(45deg, #2563eb 0%, #3b82f6 100%);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+  }
+  
+  .glass-card {
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glass-card:hover {
+    background: rgba(30, 41, 59, 0.4);
+  }
+}
+
+/* Utility classes for enhanced animations */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+.hover-blur {
+  transition: filter 0.3s ease;
+}
+
+.hover-blur:hover {
+  filter: blur(2px);
+}
+
+.hover-brighten {
+  transition: filter 0.3s ease;
+}
+
+.hover-brighten:hover {
+  filter: brightness(1.2);
+}
+
+/* Magnetic effect for interactive elements */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.magnetic:hover {
+  transform: translate(var(--x, 0), var(--y, 0)) scale(1.1);
+}
+
+/* Staggered animation for lists */
+.stagger-animation > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: stagger-in 0.6s ease forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
